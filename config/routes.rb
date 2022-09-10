@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :creatures
+  get 'creatures' => 'creatures#index'
+  post 'creatures' => 'creatures#create'
+  delete 'creatures/:id' => 'creatures#destroy'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
