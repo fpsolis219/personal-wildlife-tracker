@@ -129,9 +129,65 @@ Acceptance Criteria
 Create a resource for animal sightings with the following information: latitude, longitude, date
 Hint: An animal has_many sightings (rails g resource Sighting animal_id:integer ...)
 Hint: Date is written in Active Record as yyyy-mm-dd (“2022-07-28")
-Can create a new animal sighting in the database
+
+<!-- rails generate resource Sighting animal_id:integer latitude:string longitude:string date:string -->
+
+
+Can create a new animal sighting in the database 
+
+<!-- def create
+        sightings = Sighting.create(sightings_params)
+        if sightings.valid?
+          render json: sightings
+        else
+          render json: sightings.errors
+        end
+      end
+      private
+      def sightings_params
+        params.require(:sighting).permit(:animal_id, :latitude, :longitude, :date)
+      end -->
+
 Can update an existing animal sighting in the database
+
+<!-- def update
+        sightings = Sighting.find(params[:id])
+        sightings.update(sightings_params)
+        if sightings.valid?
+            render json: sightings
+          else
+            render json: sightings.errors
+          end
+        end  -->
+
+<!-- {
+    "animal_id": 4,
+        "latitude": "0.0000",
+        "longitude": "0.0000",
+        "date": "2022-09-10"
+}
+
+{
+    "animal_id": 4,
+        "latitude": "1.11111",
+        "longitude": "1.1111",
+        "date": "2022-09-10"
+} -->
+
+
 Can remove an animal sighting in the database
+
+<!-- def destroy
+            sightings = Sighting.find(params[:id])
+            if sightings.destroy
+              render json: sightings
+            else
+              render json: sightings.errors
+            end
+          end -->
+<!-- ///////postman///////
+
+delete http://localhost:3000/sightings/6   send --> -->
 Story 3: In order to see the wildlife sightings, as a user of the API, I need to run reports on animal sightings.
 
 Branch: animal-sightings-reports
