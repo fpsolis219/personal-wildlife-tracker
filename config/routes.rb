@@ -8,6 +8,4 @@ Rails.application.routes.draw do
   patch 'sightings/:id' => 'sightings#update'
   delete 'sightings/:id' => 'sightings#destroy'
  
-
-
 end
